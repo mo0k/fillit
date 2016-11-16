@@ -12,7 +12,7 @@ int	tetri_isvalid(char **tetri)
     while (tetri[i])
     {
 	j = 0;
-	while (tetri[j])
+	while (tetri[i][j])
 	{
 	    if (tetri[i][j] == '#')
 	    {
