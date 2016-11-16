@@ -1,4 +1,4 @@
-#include "map.h"
+#include "fillit.h"
 
 char		**generate_map(size_t size)
 {
