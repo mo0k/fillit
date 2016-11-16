@@ -9,7 +9,7 @@
 #include <stdio.h>
 
 # define BUF_SIZE 21
-# define ERROR printf("error\n")
+# define ERROR ft_putstr("error\n")
 
 typedef struct		s_map
 {
