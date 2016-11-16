@@ -16,12 +16,6 @@ SRCS = $(DIR_SRCS)/fillit.c				\
 		$(DIR_SRCS)/tetriminos.c 		\
 		$(DIR_SRCS)/utils.c
 
-INCLUDES = $(INCLUDES)/input.h		\
-		$(INCLUDES)/map.h			\
-		$(INCLUDES)/resolve.h		\
-		$(INCLUDES)/string.h		\
-		$(INCLUDES)/tetriminos.h
-
 OBJ = $(SRCS:%.c=%.o)
 
 all: $(NAME)
