@@ -39,7 +39,11 @@ int	    check_tetri(char *buff)
 	int	hash;
 	int	i;
 
-	init(&len, &height, &hash, &i);
+	len = 0;
+	height = 0;
+	hash = 0;
+	i = 0;
+//	init(&len, &height, &hash, &i);
 //	printf("%s", buff);
 	while (buff[i])
 	{
@@ -86,7 +90,7 @@ t_tetri		*get_pieces(char *av)
 		nbcheck++;
 	    if (!(check_tetri(buff)) || ret < 20 || i > 26)
 		return (NULL);
-	    pieces = store_tetri(pieces, buff);
+//	    pieces = store_tetri(pieces, buff);
 	    i++;
 	}
 	if (i == 0 || nbcheck == i)

@@ -11,7 +11,7 @@ typedef	struct	    t_hash
 {
     int		    x;
     int		    y;
-    struct  t_hash  next;
+    struct  t_hash  *next;
 }		    t_hash;
 
 typedef struct	    s_tetri
