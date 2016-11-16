@@ -12,20 +12,21 @@
 
 NAME = fillit
 CC = gcc
-SRC = fillit.c
+SRC = fillit.c input_check.c gesterror.c utils.c
 FLAGS = -Wall -Wextra -Werror
 OSRC = $(SRC:.c=.o)
+INCLUDE = libft
 
 all: $(NAME)
 
-$(NAME): make -C libft
+$(NAME): make -C $(INCLUDE)
 	$(CC) $(FLAGS) -c $(SRC) -o $(NAME)
 
-clean: make clean -C libft
+clean: make clean -C $(INCLUDE)
 	-rm -f $(OSRC)
 
 fclean: clean
-	make fclean -C libft
+	make fclean -C libf $(INCLUDE)
 	-rm -f $(NAME)
 
 re: fclean all
