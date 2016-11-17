@@ -83,6 +83,7 @@ t_tetri		*get_pieces(char *av)
 	pieces = (t_tetri *)ft_memalloc(sizeof(t_tetri));
 	buff = (char *)ft_memalloc(BUFF_SIZE + 1);
 	i = 0;
+	nbcheck = 0;
 	while ((ret = read(fd, buff, BUFF_SIZE)))
 	{
 	    buff[ret] == 0;
@@ -90,7 +91,7 @@ t_tetri		*get_pieces(char *av)
 		nbcheck++;
 	    if (!(check_tetri(buff)) || ret < 20 || i > 26)
 		return (NULL);
-//	    pieces = store_tetri(pieces, buff);
+	    pieces = store_tetri(pieces, buff);
 	    i++;
 	}
 	if (i == 0 || nbcheck == i)

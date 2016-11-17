@@ -27,11 +27,12 @@ int		    check_tetri(char *buff);
 t_tetri		    *store_tetri(t_tetri *tetri, char *buff);
 int		    usageerror();
 int		    print_error();
-void		    init(int i, int j, int k, int l);
-
-//new functions
-char			**generate_map(size_t size);
-char			**ft_reallloc_map(char **map, int add_size);
-void			display_map(char **map);
+//void		    init(int i, int j, int k, int l);
+int		    locate_tetri(t_tetri *piece, char **tetri);
+t_tetri		    *store_tetri(t_tetri *piece, char *buff);
+t_hash		    *save_tetri(char **tetri, int xstart, int ystart);
+char		**generate_map(size_t size);
+char		**ft_reallloc_map(char **map, int add_size);
+void	display_map(char **map);
 
 #endif
