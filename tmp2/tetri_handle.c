@@ -12,6 +12,7 @@ t_hash	    *save_tetri(char **tetri, int xstart, int ystart)
         return (NULL);
     if (!(tmp = (t_hash *)malloc(sizeof(t_hash))))
         return (NULL);
+    hashs = tmp;
     i = 0;
     while (tetri[ystart + i])
     {
