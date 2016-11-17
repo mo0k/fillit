@@ -29,4 +29,9 @@ int		    usageerror();
 int		    print_error();
 void		    init(int i, int j, int k, int l);
 
+//new functions
+char			**generate_map(size_t size);
+char			**ft_reallloc_map(char **map, int add_size);
+void			display_map(char **map);
+
 #endif
