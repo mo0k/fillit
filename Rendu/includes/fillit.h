@@ -32,7 +32,7 @@ t_tetri		    *store_tetri(t_tetri *piece, char *buff);
 t_hash		    *save_tetri(char **tetri, char letter, int xstart, int ystart);
 int		    place_tetri(char **map, t_hash *hashs, int i, int j);
 char		**generate_map(size_t size);
-char		**ft_reallloc_map(char **map, int add_size);
+char		**ft_reallloc_map(char **map, int new_size);
 void	display_map(char **map);
 
 #endif
