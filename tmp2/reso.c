@@ -17,7 +17,7 @@ int	place_tetri(char **map, t_hash *hashs, char letter, int xstart, int ystart)
 	{
 	    map[xstart + tmp->x][ystart + tmp->y] = '.';
 	    return (0);
-	}
+    }
     }
     free(tmp);
     return (1);

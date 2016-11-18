@@ -32,6 +32,7 @@ t_hash	    *save_tetri(char **tetri, int xstart, int ystart)
 	}
 	i++;
     }
+    tmp = NULL;
     free(tmp);
     return (hashs);
 }
