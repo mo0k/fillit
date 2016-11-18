@@ -25,6 +25,7 @@ SRC =	$(SRC_PATH)/fillit.c 		\
 		$(SRC_PATH)/utils.c 		\
 		$(SRC_PATH)/map.c 			\
 		$(SRC_PATH)/input_check.c 	\
+		$(SRC_PATH)/reso.c 			\
 		$(SRC_PATH)/tetri_handle.c
 
 OSRC = $(SRC:.c=.o)
