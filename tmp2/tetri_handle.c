@@ -12,7 +12,7 @@ t_hash	    *save_tetri(char **tetri, int xstart, int ystart)
         return (NULL);
     if (!(tmp = (t_hash *)malloc(sizeof(t_hash))))
         return (NULL);
-    hashs = tmp;
+    tmp = hashs;
     i = 0;
     while (tetri[ystart + i])
     {
@@ -23,7 +23,8 @@ t_hash	    *save_tetri(char **tetri, int xstart, int ystart)
 	    {
 		tmp->x = i;
 		tmp->y = j;
-		tmp->next = tmp;
+    		if (!(tmp->next = (t_hash *)malloc(sizeof(t_hash))))
+		    return (NULL);
 		tmp = tmp->next;
 //		printf("%d %d \n", i, j);
 	    }
@@ -44,7 +45,7 @@ int	    locate_tetri(t_tetri *piece, char **tetri)
 
     i = 0;
     xstart = 4;
-    ystart = 0;
+    ystart = -1;
     while (tetri[i])
     {
 	j = 0;
@@ -67,17 +68,25 @@ int	    locate_tetri(t_tetri *piece, char **tetri)
     return (1);
 }
 
-t_tetri	*store_tetri(t_tetri *piece, char *buff)
+t_tetri	    *store_tetri(t_tetri *piece, char *buff)
 {
     t_tetri	*tmp;
+    char	letter;
 
     if (!(tmp = (t_tetri *)malloc(sizeof(t_tetri))))
 	return (0);
     tmp = piece;
-    while (tmp->next)
+    letter = 'A';
+    while (tmp->hash)
+    {
+	if (!(tmp->next = (t_tetri *)malloc(sizeof(t_tetri))))
+	    return (0);
 	tmp = tmp->next;
+	letter++;
+    }
 //    printf("%s", buff);
     if (!locate_tetri(tmp, ft_strsplit(buff, '\n')))
        return (NULL);
+    tmp->letter = letter;
     return (piece);
 }

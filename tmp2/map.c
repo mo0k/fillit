@@ -1,4 +1,5 @@
-#include "map.h"
+#include "fillit.h"
+#include "libft/libft.h"
 
 static void		delete_map(char **map)
 {
@@ -88,7 +89,8 @@ void			display_map(char **map)
 	y = map;
 	while (*y)
 	{
-		ft_putstr("%s\n", *y);
+		ft_putstr(*y);
+		ft_putchar('\n');
 		y++;
 	}
 }
