@@ -5,6 +5,8 @@ int	place_tetri(char **map, t_hash *hashs, char letter, int xstart, int ystart)
 {
     t_hash   *tmp;
 
+    if (!hashs->next)
+	return (1);
     if (!(tmp = (t_hash *)malloc(sizeof(t_hash))))
 	return (0);
     tmp = hashs;

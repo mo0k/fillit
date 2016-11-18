@@ -13,6 +13,8 @@ int	main(int ac, char **av)
 	    return (print_error());
 	map = generate_map(6);
 	place_tetri(map, pieces->hash, pieces->letter, 0, 0);
+	pieces = pieces->next;
+	place_tetri(map, pieces->hash, pieces->letter, 0, 0);
 	display_map(map);
 	close(ac);
 	return (0);
