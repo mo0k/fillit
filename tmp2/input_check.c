@@ -60,7 +60,7 @@ int	    check_tetri(char *buff)
 	    }
 	    i++;
 	}
-	if (buff[i - 1] == '\n' && len == 0)
+	if (buff[i - 1] == '\n' && len == 0 && i != 20)
 	    height--;
 	if (height != 4 || hash != 4)
 	    return (0);
@@ -86,7 +86,6 @@ t_tetri		*get_pieces(char *av)
 	nbcheck = 0;
 	while ((ret = read(fd, buff, BUFF_SIZE)))
 	{
-	    buff[ret] == 0;
 	    if (ret == 21)
 		nbcheck++;
 	    if (!(check_tetri(buff)) || ret < 20 || i > 26)
