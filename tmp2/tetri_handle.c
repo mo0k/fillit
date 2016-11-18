@@ -1,7 +1,7 @@
 #include "fillit.h"
 #include "libft/libft.h"
 
-t_hash	    *save_tetri(char **tetri, int xstart, int ystart)
+t_hash	    *save_tetri(char **tetri, char letter, int xstart, int ystart)
 {
     int	    i;
     int	    j;
@@ -23,6 +23,7 @@ t_hash	    *save_tetri(char **tetri, int xstart, int ystart)
 	    {
 		tmp->x = i;
 		tmp->y = j;
+		tmp->letter = letter;
     		if (!(tmp->next = (t_hash *)malloc(sizeof(t_hash))))
 		    return (NULL);
 		tmp = tmp->next;
@@ -37,7 +38,7 @@ t_hash	    *save_tetri(char **tetri, int xstart, int ystart)
     return (hashs);
 }
 
-int	    locate_tetri(t_tetri *piece, char **tetri)
+int	    locate_tetri(t_tetri *piece, char letter, char **tetri)
 {
     int	    i;
     int	    j;
@@ -64,7 +65,7 @@ int	    locate_tetri(t_tetri *piece, char **tetri)
     }
     if (!(piece->hash = (t_hash *)malloc(sizeof(t_hash))))
 	return (0);
-    if (!(piece->hash = save_tetri(tetri, xstart, ystart)))
+    if (!(piece->hash = save_tetri(tetri, letter, xstart, ystart)))
 	return (0);
     return (1);
 }
@@ -86,8 +87,7 @@ t_tetri	    *store_tetri(t_tetri *piece, char *buff)
 	letter++;
     }
 //    printf("%s", buff);
-    if (!locate_tetri(tmp, ft_strsplit(buff, '\n')))
+    if (!locate_tetri(tmp, letter, ft_strsplit(buff, '\n')))
        return (NULL);
-    tmp->letter = letter;
     return (piece);
 }

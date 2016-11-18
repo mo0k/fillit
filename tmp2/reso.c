@@ -1,7 +1,7 @@
 #include "fillit.h"
 #include "libft/libft.h"
 
-int	place_tetri(char **map, t_hash *hashs, char letter, int xstart, int ystart)
+int	place_tetri(char **map, t_hash *hashs, int xstart, int ystart)
 {
     t_hash   *tmp;
 
@@ -14,8 +14,8 @@ int	place_tetri(char **map, t_hash *hashs, char letter, int xstart, int ystart)
 	return (0);
     if (map[xstart + tmp->x][ystart + tmp->y] == '.')
     {
-	map[xstart + tmp->x][ystart + tmp->y] = letter;
-	if (!(place_tetri(map, tmp->next, letter, xstart, ystart)))
+	map[xstart + tmp->x][ystart + tmp->y] = tmp->letter;
+	if (!(place_tetri(map, tmp->next, xstart, ystart)))
 	{
 	    map[xstart + tmp->x][ystart + tmp->y] = '.';
 	    return (0);
