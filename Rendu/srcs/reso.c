@@ -3,36 +3,28 @@
 
 int	place_tetri(char **map, t_hash *hashs, int xstart, int ystart)
 {
-    t_hash  *tmp;
     int	    i;
 
     i = ft_strlen(map[0]);
     if (!hashs->next)
 	return (1);
-    if (!(tmp = (t_hash *)malloc(sizeof(t_hash))))
-	return (0);
-    tmp = hashs;
-    if (xstart + tmp->x < i && ystart + tmp->y < i)
+    if (xstart + hashs->x < i && ystart + hashs->y < i)
     {
-	if (!(map[xstart + tmp->x][ystart + tmp->y] == '.'))
+	if (!(map[xstart + hashs->x][ystart + hashs->y] == '.'))
 	    return (0);
-	if (map[xstart + tmp->x][ystart + tmp->y] == '.')
+	if (map[xstart + hashs->x][ystart + hashs->y] == '.')
 	{
-	    map[xstart + tmp->x][ystart + tmp->y] = tmp->letter;
-	    if (!(place_tetri(map, tmp->next, xstart, ystart)))
+	    map[xstart + hashs->x][ystart + hashs->y] = hashs->letter;
+	    display_map(map);
+	    if (!(place_tetri(map, hashs->next, xstart, ystart)))
 	    {
-		map[xstart + tmp->x][ystart + tmp->y] = '.';
-		free(tmp);
+		map[xstart + hashs->x][ystart + hashs->y] = '.';
 		return (0);
 	    }
 	}
     }
     else
-    {
-	free(tmp);
 	return (0);
-    }
-    free(tmp);
     return (1);
 }
 
@@ -65,8 +57,8 @@ char	**first_resolve(char **map, t_tetri *piece)
 	}
 	i++;
     }
-    if (!placed)
-	map = ft_realloc_map(map, 1);
+//    if (!placed)
+//	map = ft_realloc_map(map, 1);
     if (!placed)
 	first_resolve(map, piece);
     return (NULL);
