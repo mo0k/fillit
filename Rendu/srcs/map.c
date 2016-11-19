@@ -14,32 +14,33 @@ void		delete_map(char **map)
 	free(map);
 }
 
-char			**ft_realloc_map(char **map, int new_size)
+char			**ft_realloc_map(char **map, int add_size)
 {
 	int			size;
+	int			new_size;
 	char		**new_map;
 	int			i;
 
 	i = 0;
-	size = ft_strlen(map[1]);
-	if (!(new_map = (char**)ft_memalloc(new_size + 1)))
+	size = ft_strlen(map[0]);
+	new_size = size + add_size;
+	if (!(new_map = (char**)ft_memalloc(sizeof(char*) * (new_size + 1))))
 		return (NULL);
 	while (i < new_size)
 	{
+//		printf("i \n");
 		new_map[i] = (char*)ft_memalloc(new_size + 1);
+		ft_memset(new_map[i], '.', new_size);
 		if (i < size)
 		{
-			ft_memcpy(new_map[i], map[i], size);
-			if (size < new_size)
-				ft_memset(new_map[i] + size, '.', new_size - size);
+//		    printf("p \n");
+		    ft_memcpy(new_map[i], map[i], size);
 		}
-		if (i < new_size)
-			ft_memset(new_map[i], '.', new_size);
 		i++;
 	}
 	new_map[i] = NULL;
 	//new_map[new_size - 1][new_size - 1] = '*';
-	delete_map(map);
+	//delete_map(map);
 	return (new_map);
 }
 
