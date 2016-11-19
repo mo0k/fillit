@@ -11,8 +11,8 @@ int	main(int ac, char **av)
 	    return (usageerror());
 	if (!(pieces = get_pieces(av[1])))
 	    return (print_error());
-	map = generate_map(6);
-	place_tetri(map, pieces->hash, 0, 0);
+	map = generate_map(4);
+	map = first_resolve(map, pieces);
 //	pieces = pieces->next;
 //	place_tetri(map, pieces->hash, 0, 1);
 	display_map(map);

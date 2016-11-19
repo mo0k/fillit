@@ -31,8 +31,9 @@ int		    locate_tetri(t_tetri *piece, char letter, char **tetri);
 t_tetri		    *store_tetri(t_tetri *piece, char *buff);
 t_hash		    *save_tetri(char **tetri, char letter, int xstart, int ystart);
 int		    place_tetri(char **map, t_hash *hashs, int i, int j);
+char		**first_resolve(char **map, t_tetri *piece);
 char		**generate_map(size_t size);
-char		**ft_reallloc_map(char **map, int new_size);
+char		**ft_realloc_map(char **map, int new_size);
 void	display_map(char **map);
 
 #endif

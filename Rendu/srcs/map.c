@@ -28,7 +28,7 @@ static size_t	map_size(char **map)
 	return (i);
 }
 
-char			**ft_reallloc_map(char **map, int new_size)
+char			**ft_realloc_map(char **map, int new_size)
 {
 	int			size;
 	char		**new_map;
@@ -61,14 +61,14 @@ char			**generate_map(size_t size)
 {
 	char		**map;
 	int			y;
-	int			x;
+//	int			x;
 
 	if (!(map = (char **)malloc(sizeof(char*) * size + 1)))
 		return (NULL);
 	y = 0;
 	while (y < (int)size)
 	{
-		x = 0;
+//		x = 0;
 		if (!(map[y] = (char*)ft_memalloc(size + 1)))
 		{
 			free(map);

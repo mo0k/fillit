@@ -24,3 +24,39 @@ int	place_tetri(char **map, t_hash *hashs, int xstart, int ystart)
     free(tmp);
     return (1);
 }
+
+/*char	**resolve(char **map, t_tetri *pieces, int maxsize)
+{
+}*/
+
+char	**first_resolve(char **map, t_tetri *piece)
+{
+    int	    i;
+    int	    j;
+    int	    placed;
+
+    if (!piece)
+	return (map);
+    i = 0;
+    placed = 0;
+    while (map[i])
+    {
+	j = 0;
+	while(map[i][j])
+	{
+	    if (place_tetri(map,piece->hash, i, j))
+	    {
+		if ((map = first_resolve(map, piece->next)))
+		    return (map);
+		placed = 1;
+	    }
+	    j++;
+	}
+	i++;
+    }
+    if (!placed)
+	map = ft_realloc_map(map, 1);
+    if (!placed)
+	first_resolve(map, piece);
+    return (NULL);
+}
