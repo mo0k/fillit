@@ -9,6 +9,6 @@ int	usageerror()
 
 int	print_error()
 {
-        ft_putstr("error");
+	ft_putstr("error");
 	return (0);
 }

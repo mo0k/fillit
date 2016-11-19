@@ -72,25 +72,35 @@ int	    check_tetri(char *buff)
 t_tetri		*get_pieces(char *av)
 {
 	t_tetri		*pieces;
+	t_tetri		*tmp;
 	char		*buff;
 	unsigned int	nbcheck;
 	unsigned int	i;
+	char		letter;
 	int		fd;
 	int		ret;
 
 	if (!(fd = open(av, O_RDONLY)))
 	    return (NULL);
 	pieces = (t_tetri *)ft_memalloc(sizeof(t_tetri));
+	tmp = (t_tetri *)ft_memalloc(sizeof(t_tetri));
 	buff = (char *)ft_memalloc(BUFF_SIZE + 1);
 	i = 0;
 	nbcheck = 0;
+	letter = 'A';
+	tmp = pieces;
 	while ((ret = read(fd, buff, BUFF_SIZE)))
 	{
 	    if (ret == 21)
 		nbcheck++;
 	    if (!(check_tetri(buff)) || ret < 20 || i > 26)
 		return (NULL);
-	    pieces = store_tetri(pieces, buff);
+	    if (!(locate_tetri(tmp, letter, ft_strsplit(buff, '\n'))))
+		return (NULL);
+//	    printf("%s", buff);
+	    tmp->next = (t_tetri *)malloc(sizeof(t_tetri));
+	    tmp = tmp->next;
+	    letter++;
 	    i++;
 	}
 	if (i == 0 || nbcheck == i)

@@ -1,7 +1,7 @@
 #include "fillit.h"
 #include "libft.h"
 
-static void		delete_map(char **map)
+void		delete_map(char **map)
 {
 	int 		y;
 
@@ -14,20 +14,6 @@ static void		delete_map(char **map)
 	free(map);
 }
 
-static size_t	map_size(char **map)
-{
-	size_t		i;
-
-	i = 0;
-	while (*map)
-	{
-		i++;
-		map++;
-	}
-	printf("i: %d\n", (int)i);
-	return (i);
-}
-
 char			**ft_realloc_map(char **map, int new_size)
 {
 	int			size;
@@ -35,7 +21,7 @@ char			**ft_realloc_map(char **map, int new_size)
 	int			i;
 
 	i = 0;
-	size = map_size(map);
+	size = ft_strlen(map[1]);
 	if (!(new_map = (char**)ft_memalloc(new_size + 1)))
 		return (NULL);
 	while (i < new_size)

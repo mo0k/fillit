@@ -67,10 +67,11 @@ int	    locate_tetri(t_tetri *piece, char letter, char **tetri)
 	return (0);
     if (!(piece->hash = save_tetri(tetri, letter, xstart, ystart)))
 	return (0);
+//    printf("%c", letter);
     return (1);
 }
 
-t_tetri	    *store_tetri(t_tetri *piece, char *buff)
+/*t_tetri	    *store_tetri(t_tetri *piece, char *buff)
 {
     t_tetri	*tmp;
     char	letter;
@@ -90,4 +91,4 @@ t_tetri	    *store_tetri(t_tetri *piece, char *buff)
     if (!locate_tetri(tmp, letter, ft_strsplit(buff, '\n')))
        return (NULL);
     return (piece);
-}
+}*/

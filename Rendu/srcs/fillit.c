@@ -13,9 +13,10 @@ int	main(int ac, char **av)
 	    return (print_error());
 	map = generate_map(4);
 	map = first_resolve(map, pieces);
-//	pieces = pieces->next;
+//	display_map(map);
 //	place_tetri(map, pieces->hash, 0, 1);
-	display_map(map);
+//	display_map(map);
+//	delete_map(map);
 	close(ac);
 	return (0);
 }
