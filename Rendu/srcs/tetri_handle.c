@@ -71,24 +71,3 @@ int	    locate_tetri(t_tetri *piece, char letter, char **tetri)
     return (1);
 }
 
-/*t_tetri	    *store_tetri(t_tetri *piece, char *buff)
-{
-    t_tetri	*tmp;
-    char	letter;
-
-    if (!(tmp = (t_tetri *)malloc(sizeof(t_tetri))))
-	return (0);
-    tmp = piece;
-    letter = 'A';
-    while (tmp->hash)
-    {
-	if (!(tmp->next = (t_tetri *)malloc(sizeof(t_tetri))))
-	    return (0);
-	tmp = tmp->next;
-	letter++;
-    }
-//    printf("%s", buff);
-    if (!locate_tetri(tmp, letter, ft_strsplit(buff, '\n')))
-       return (NULL);
-    return (piece);
-}*/

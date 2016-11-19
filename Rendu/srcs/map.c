@@ -28,19 +28,14 @@ char			**ft_realloc_map(char **map, int add_size)
 		return (NULL);
 	while (i < new_size)
 	{
-//		printf("i \n");
 		new_map[i] = (char*)ft_memalloc(new_size + 1);
 		ft_memset(new_map[i], '.', new_size);
 		if (i < size)
-		{
-//		    printf("p \n");
 		    ft_memcpy(new_map[i], map[i], size);
-		}
 		i++;
 	}
 	new_map[i] = NULL;
-	//new_map[new_size - 1][new_size - 1] = '*';
-	//delete_map(map);
+	delete_map(map);
 	return (new_map);
 }
 
@@ -48,14 +43,12 @@ char			**generate_map(size_t size)
 {
 	char		**map;
 	int			y;
-//	int			x;
 
 	if (!(map = (char **)malloc(sizeof(char*) * size + 1)))
 		return (NULL);
 	y = 0;
 	while (y < (int)size)
 	{
-//		x = 0;
 		if (!(map[y] = (char*)ft_memalloc(size + 1)))
 		{
 			free(map);
