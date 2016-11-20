@@ -11,7 +11,7 @@ int	main(int ac, char **av)
 	if (!(pieces = get_pieces(av[1])))
 	    return (print_error());
 	map = generate_map(3);
-	resolve(map, pieces);
+	resolve(map, pieces, 0, 0);
 	close(ac);
 	return (0);
 }

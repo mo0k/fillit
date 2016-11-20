@@ -47,10 +47,8 @@ void	delete_letter(char **map, int c)
 	}
 }
 
-int 	resolve(char **map, t_tetri *piece)
+int 	resolve(char **map, t_tetri *piece, int i, int j)
 {
-	int	    i;
-	int	    j;
 	int	    all_tested;
 
 	all_tested = 0;
@@ -66,7 +64,7 @@ int 	resolve(char **map, t_tetri *piece)
 		{
 			if (place_tetri(map, piece->hash, i, j))
 			{
-				if ((resolve(map, piece->next)))
+				if ((resolve(map, piece->next, i, j)))
 					return (1);
 				delete_letter(map, piece->hash->letter);
 			}
@@ -77,6 +75,6 @@ int 	resolve(char **map, t_tetri *piece)
 	if (all_tested)
 		map = ft_realloc_map(map, 1);
 	if (all_tested)
-		resolve(map, piece);
+		resolve(map, piece, 0, 0);
 	return (0);
 }
