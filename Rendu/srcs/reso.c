@@ -3,28 +3,28 @@
 
 int	place_tetri(char **map, t_hash *hashs, int xstart, int ystart)
 {
-    int	    i;
+	int	    i;
 
-    i = ft_strlen(map[0]);
-    if (!hashs->next)
-	return (1);
-    if (xstart + hashs->x < i && ystart + hashs->y < i)
-    {
-	if (!(map[xstart + hashs->x][ystart + hashs->y] == '.'))
-	    return (0);
-	if (map[xstart + hashs->x][ystart + hashs->y] == '.')
+	i = ft_strlen(map[0]);
+	if (!hashs->next)
+		return (1);
+	if (xstart + hashs->x < i && ystart + hashs->y < i)
 	{
-	    map[xstart + hashs->x][ystart + hashs->y] = hashs->letter;
-	    if (!(place_tetri(map, hashs->next, xstart, ystart)))
-	    {
-		map[xstart + hashs->x][ystart + hashs->y] = '.';
-		return (0);
-	    }
+		if (!(map[xstart + hashs->x][ystart + hashs->y] == '.'))
+			return (0);
+		if (map[xstart + hashs->x][ystart + hashs->y] == '.')
+		{
+			map[xstart + hashs->x][ystart + hashs->y] = hashs->letter;
+			if (!(place_tetri(map, hashs->next, xstart, ystart)))
+			{
+				map[xstart + hashs->x][ystart + hashs->y] = '.';
+				return (0);
+			}
+		}
 	}
-    }
-    else
+	else
 		return (0);
-    return (1);
+	return (1);
 }
 
 void	delete_letter(char **map, int c)
@@ -49,44 +49,34 @@ void	delete_letter(char **map, int c)
 
 int 	resolve(char **map, t_tetri *piece)
 {
-    int	    i;
-    int	    j;
-    int	    all_tested;
-    int		ret;
+	int	    i;
+	int	    j;
+	int	    all_tested;
 
-    ret = 0;
-    all_tested = 0;
-    if (!piece->hash)
-    {
+	all_tested = 0;
+	if (!piece->hash)
 		display_map(map);
-		ret = 1;
-    }
-    i = 0;
-    while (!ret && map[i])
-    {
-		j = 0;
-		while(map[i][j])
+	if (!piece->hash)
+		return (1);
+	i = -1;
+	while (map[++i])
+	{
+		j = -1;
+		while(map[i][++j])
 		{
-		    if (place_tetri(map, piece->hash, i, j))
-		    {
+			if (place_tetri(map, piece->hash, i, j))
+			{
 				if ((resolve(map, piece->next)))
 					return (1);
-				else
-					delete_letter(map, piece->hash->letter);
+				delete_letter(map, piece->hash->letter);
 			}
-			j++;
 		}
-		i++;
 	}
-    if (ret)
-	    return (1);
-    if (piece->hash->letter == 'A')
-    	all_tested = 1;
-	if (!ret && all_tested)
-    {
-    	map = ft_realloc_map(map, 1);
+	if (piece->hash->letter == 'A')
+	   all_tested = 1;
+	if (all_tested)
+		map = ft_realloc_map(map, 1);
+	if (all_tested)
 		resolve(map, piece);
-    	return (0);
-    }
-    return (0);
+	return (0);
 }
