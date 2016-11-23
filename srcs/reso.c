@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 11:18:21 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/23 14:20:13 by amazurie         ###   ########.fr       */
+/*   Updated: 2016/11/23 17:43:24 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,12 @@ int		resolve(char **map, t_tetri *piece, int i, int j)
 {
 	int		all_tested;
 
-	all_tested = 0;
 	if (!piece->hash)
+	{
 		display_map(map);
-	if (!piece->hash)
+		delete_map(map);
 		return (1);
+	}
 	i = -1;
 	while (map[++i])
 	{
@@ -81,8 +82,7 @@ int		resolve(char **map, t_tetri *piece, int i, int j)
 			}
 		}
 	}
-	all_tested = (piece->hash->letter == 'A') ? 1 : 0;
-	if (all_tested)
+	if ((all_tested = (piece->hash->letter == 'A') ? 1 : 0))
 		resolve(ft_realloc_map(map, 1), piece, 0, 0);
 	return (0);
 }

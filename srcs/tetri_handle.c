@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 11:18:28 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/23 15:07:23 by amazurie         ###   ########.fr       */
+/*   Updated: 2016/11/23 17:38:31 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ t_hash		*save_tetri(char **tetri, char letter, int xstart, int ystart)
 		while (tetri[ystart + i][xstart + ++j])
 		{
 			if (tetri[ystart + i][xstart + j] == '#')
-				tmp = save_hash(tmp, letter, i, j);
+				if (!(tmp = save_hash(tmp, letter, i, j)))
+					return (NULL);
 		}
 	}
 	tmp = NULL;
@@ -83,14 +84,16 @@ void		delete_pieces(t_tetri *pieces)
 {
 	t_hash *hashs;
 
-	while (pieces->hash)
-	{
-		hashs = pieces->hash;
-		free(pieces->hash);
-		pieces->hash = hashs->next;
-	}
-	free(hashs);
 	if (pieces->next->hash)
-		delete_pieces(pieces->next);
-	free(pieces);
+	{
+		while (pieces->hash->next)
+		{
+			hashs = pieces->hash;
+			free(pieces->hash);
+			pieces->hash = hashs->next;
+		}
+		if (pieces->next->hash)
+			delete_pieces(pieces->next);
+		free(pieces);
+	}
 }

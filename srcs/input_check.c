@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 11:17:54 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/23 12:27:54 by amazurie         ###   ########.fr       */
+/*   Updated: 2016/11/23 15:49:27 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ t_tetri		*get_pieces(int fd, t_tetri *pieces, char *buff, int *nbpieces)
 	char	letter;
 	int		ret;
 
-	tmp = (t_tetri *)ft_memalloc(sizeof(t_tetri));
+	if (!(tmp = (t_tetri *)ft_memalloc(sizeof(t_tetri))))
+		return (NULL);
 	*nbpieces = 0;
 	nbcheck = 0;
 	letter = 'A';
@@ -88,11 +89,11 @@ t_tetri		*get_pieces(int fd, t_tetri *pieces, char *buff, int *nbpieces)
 		nbcheck += (ret == 21) ? 1 : 0;
 		if (!(check_tetri(buff)) || ret < 20 || ++*nbpieces > 26)
 			return (NULL);
-		if (!(locate_tetri(tmp, letter, ft_strsplit(buff, '\n'))))
+		if (!(locate_tetri(tmp, letter++, ft_strsplit(buff, '\n'))))
 			return (NULL);
-		tmp->next = (t_tetri *)malloc(sizeof(t_tetri));
+		if (!(tmp->next = (t_tetri *)malloc(sizeof(t_tetri))))
+			return (NULL);
 		tmp = tmp->next;
-		letter++;
 	}
 	if (*nbpieces == 0 || nbcheck == *nbpieces)
 		return (NULL);
