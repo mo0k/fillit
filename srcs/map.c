@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 11:18:11 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/21 11:30:08 by amazurie         ###   ########.fr       */
+/*   Updated: 2016/11/23 14:54:37 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,11 @@ char		**ft_realloc_map(char **map, int add_size)
 		return (NULL);
 	while (i < new_size)
 	{
-		new_map[i] = (char*)ft_memalloc(new_size + 1);
+		if (!(new_map[i] = (char*)ft_memalloc(new_size + 1)))
+		{
+			delete_map(new_map);
+			return (0);
+		}
 		ft_memset(new_map[i], '.', new_size);
 		if (i < size)
 			ft_memcpy(new_map[i], map[i], size);

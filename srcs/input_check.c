@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 11:17:54 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/21 12:12:46 by amazurie         ###   ########.fr       */
+/*   Updated: 2016/11/23 12:27:54 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,23 +71,22 @@ int			check_tetri(char *buff)
 	return (tetri_isvalid(ft_strsplit(buff, '\n')));
 }
 
-t_tetri		*get_pieces(int fd, t_tetri *pieces, char *buff)
+t_tetri		*get_pieces(int fd, t_tetri *pieces, char *buff, int *nbpieces)
 {
 	t_tetri	*tmp;
 	int		nbcheck;
-	int		i;
 	char	letter;
 	int		ret;
 
 	tmp = (t_tetri *)ft_memalloc(sizeof(t_tetri));
-	i = 0;
+	*nbpieces = 0;
 	nbcheck = 0;
 	letter = 'A';
 	tmp = pieces;
 	while ((ret = read(fd, buff, BUFF_SIZE)))
 	{
 		nbcheck += (ret == 21) ? 1 : 0;
-		if (!(check_tetri(buff)) || ret < 20 || ++i > 26)
+		if (!(check_tetri(buff)) || ret < 20 || ++*nbpieces > 26)
 			return (NULL);
 		if (!(locate_tetri(tmp, letter, ft_strsplit(buff, '\n'))))
 			return (NULL);
@@ -95,7 +94,7 @@ t_tetri		*get_pieces(int fd, t_tetri *pieces, char *buff)
 		tmp = tmp->next;
 		letter++;
 	}
-	if (i == 0 || nbcheck == i)
+	if (*nbpieces == 0 || nbcheck == *nbpieces)
 		return (NULL);
 	return (pieces);
 }

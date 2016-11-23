@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 11:14:47 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/21 12:32:02 by amazurie         ###   ########.fr       */
+/*   Updated: 2016/11/23 15:04:36 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct	s_tetri
 	struct s_tetri	*next;
 }				t_tetri;
 
-t_tetri			*get_pieces(int fd, t_tetri *pieces, char *buff);
+t_tetri			*get_pieces(int fd, t_tetri *pieces, char *buff, int *nbpieces);
 int				tetri_isvalid(char **tetri);
 int				check_tetri(char *buff);
 int				usageerror(void);
@@ -48,5 +48,6 @@ char			**generate_map(size_t size);
 char			**ft_realloc_map(char **map, int new_size);
 void			delete_map(char **map);
 void			display_map(char **map);
+void			delete_pieces(t_tetri *pieces);
 
 #endif

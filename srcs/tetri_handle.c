@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 11:18:28 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/21 12:33:25 by amazurie         ###   ########.fr       */
+/*   Updated: 2016/11/23 15:07:23 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,20 @@ int			locate_tetri(t_tetri *piece, char letter, char **tetri)
 	if (!(piece->hash = save_tetri(tetri, letter, xstart, ystart)))
 		return (0);
 	return (1);
+}
+
+void		delete_pieces(t_tetri *pieces)
+{
+	t_hash *hashs;
+
+	while (pieces->hash)
+	{
+		hashs = pieces->hash;
+		free(pieces->hash);
+		pieces->hash = hashs->next;
+	}
+	free(hashs);
+	if (pieces->next->hash)
+		delete_pieces(pieces->next);
+	free(pieces);
 }
