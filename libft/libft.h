@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/03 17:29:42 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/21 11:11:50 by amazurie         ###   ########.fr       */
+/*   Updated: 2016/11/25 16:49:18 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ int				ft_lstlen(t_list **alst);
 char			*ft_strtrimc(const char *s, char c);
 char			*ft_strndup(const char *s1, size_t n);
 char			*ft_strnjoin(char const *s1, char const *s2, size_t n);
+int				ft_sqrt(int nb);
 
 #endif

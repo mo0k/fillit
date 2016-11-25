@@ -6,7 +6,7 @@
 #    By: amazurie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/05 13:11:07 by amazurie          #+#    #+#              #
-#    Updated: 2016/11/21 11:11:23 by amazurie         ###   ########.fr        #
+#    Updated: 2016/11/25 16:48:32 by amazurie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ ft_strrchr.c ft_isdigit.c ft_memset.c ft_putstr_fd.c ft_strdup.c ft_strmapi.c \
 ft_strsplit.c ft_isprint.c ft_memalloc.c ft_putchar.c ft_strequ.c ft_strncat.c \
 ft_strstr.c ft_lstnew.c ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c \
 ft_lstmap.c ft_isspace.c ft_isblank.c ft_isupper.c ft_islower.c ft_strndup.c \
-ft_strtrimc.c ft_strnjoin.c
+ft_strtrimc.c ft_strnjoin.c ft_sqrt.c
 FLAGS = -Wall -Wextra -Werror
 OSRC = $(SRC:.c=.o)
 HEADER = libft.h
