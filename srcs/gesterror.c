@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 11:17:31 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/21 11:21:16 by amazurie         ###   ########.fr       */
+/*   Updated: 2016/11/25 20:10:50 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int	usageerror(void)
 
 int	print_error(void)
 {
-	ft_putstr("error");
+	ft_putstr("error\n");
 	return (0);
 }
