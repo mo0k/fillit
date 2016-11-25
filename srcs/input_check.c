@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 11:17:54 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/23 15:49:27 by amazurie         ###   ########.fr       */
+/*   Updated: 2016/11/25 11:22:17 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int			check_tetri(char *buff)
 			len++;
 		if (buff[i] == '\n')
 		{
-			if ((len != 4 && i < 18) || i > 21)
+			if ((len != 4 && i < 20) || i > 21)
 				return (0);
 			height++;
 			len = 0;
