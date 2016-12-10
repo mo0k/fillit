@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_foreach.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jmoucade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/12 12:12:21 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/12 12:23:54 by amazurie         ###   ########.fr       */
+/*   Created: 2016/11/04 18:31:06 by jmoucade          #+#    #+#             */
+/*   Updated: 2016/11/04 18:31:08 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strndup(const char *s1, size_t n)
+void	ft_foreach(int *tab, int length, void (*f)(int))
 {
-	char	*str;
-
-	if (!(str = (char *)ft_memalloc(n + 1)))
-		return (NULL);
-	ft_memcpy(str, s1, n);
-	return (str);
+	while (length--)
+		(f(*(tab++)));
 }

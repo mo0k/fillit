@@ -3,25 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jmoucade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 17:42:54 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/11 17:47:44 by amazurie         ###   ########.fr       */
+/*   Created: 2016/11/06 09:15:34 by jmoucade          #+#    #+#             */
+/*   Updated: 2016/11/06 09:15:35 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_lstlen(t_list **alst)
+size_t		ft_lstlen(t_list *lst)
 {
-	t_list	*tmp;
-	size_t	i;
+	int		ret;
+	t_list	*begin;
 
-	tmp = *alst;
-	while (tmp->next)
+	ret = 0;
+	begin = lst;
+	while (begin)
 	{
-		tmp = tmp->next;
-		i++;
+		ret++;
+		begin = begin->next;
 	}
-	return (i);
+	return (ret);
 }

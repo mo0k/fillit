@@ -3,46 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jmoucade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 16:15:40 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/10 15:10:13 by amazurie         ###   ########.fr       */
+/*   Created: 2016/11/05 14:23:13 by jmoucade          #+#    #+#             */
+/*   Updated: 2016/11/05 14:23:39 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_lennb(int n)
-{
-	int i;
-
-	i = 0;
-	while (n /= 10)
-		i++;
-	return (i);
-}
-
 char		*ft_itoa(int n)
 {
-	char	*str;
-	long	i;
-	long	tmp;
+	long	nbr;
+	int		i;
+	long	div;
+	char	*ret;
 
-	tmp = (long)n;
-	if (n < 0)
-		tmp *= -1;
-	i = (long)ft_lennb(tmp) + (n < 0);
-	if (!(str = ft_strnew(i + 1)))
+	i = 0;
+	div = 1;
+	nbr = (long)n;
+	if (!(ret = ft_strnew(ft_nbrlen(n))))
 		return (NULL);
-	if (n == 0)
-		str[0] = '0';
-	while (tmp)
+	if (nbr == 0)
+		ret[i] = '0';
+	if (nbr < 0)
 	{
-		str[i] = tmp % 10 + '0';
-		tmp /= 10;
-		i--;
+		nbr *= -1;
+		ret[i++] = '-';
 	}
-	if (n < 0)
-		str[0] = '-';
-	return (str);
+	while (nbr / div != 0)
+		div *= 10;
+	while (div - 1)
+	{
+		ret[i++] = (nbr - (nbr / div * div)) / (div / 10) + 48;
+		div /= 10;
+	}
+	return (ret);
 }

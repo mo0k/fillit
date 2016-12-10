@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrimc.c                                      :+:      :+:    :+:   */
+/*   ft_memrcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jmoucade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/12 09:53:26 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/12 10:05:42 by amazurie         ###   ########.fr       */
+/*   Created: 2016/11/05 14:28:00 by jmoucade          #+#    #+#             */
+/*   Updated: 2016/11/05 14:28:12 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrimc(const char *s, char c)
+void	*ft_memrcpy(void *dst, const void *src, size_t n)
 {
-	unsigned int	i;
-	size_t			j;
+	unsigned char *ptr_dst;
+	unsigned char *ptr_src;
 
-	i = 0;
-	j = 0;
-	if (!s)
-		return (ft_strsub(s, 0, 1));
-	while (s[i] == c)
-		i++;
-	while (s[i + j])
-		j++;
-	j--;
-	while (s[i + j] == c)
-		j--;
-	return (ft_strsub(s, i, j + 1));
+	ptr_dst = (unsigned char *)dst;
+	ptr_src = (unsigned char *)src;
+	while (n--)
+		ptr_dst[n] = ptr_src[n];
+	return (dst);
 }

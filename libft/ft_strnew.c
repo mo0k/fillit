@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jmoucade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 14:53:38 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/09 12:06:36 by amazurie         ###   ########.fr       */
+/*   Created: 2016/11/05 14:46:29 by jmoucade          #+#    #+#             */
+/*   Updated: 2016/11/05 14:46:37 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+char		*ft_strnew(size_t size)
 {
-	char *str;
+	char *ptr;
 
-	if (!(str = (char *)ft_memalloc(size + 1)))
+	if (!(ptr = (char *)malloc(sizeof(char) * size + 1)))
 		return (NULL);
-	ft_bzero(str, size);
-	return ((char *)str);
+	ft_bzero(ptr, size + 1);
+	return (ptr);
 }

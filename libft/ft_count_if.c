@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_count_if.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jmoucade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 14:56:40 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/14 10:22:43 by amazurie         ###   ########.fr       */
+/*   Created: 2016/11/04 18:36:03 by jmoucade          #+#    #+#             */
+/*   Updated: 2016/11/04 18:36:05 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int		ft_isspace(char c)
+int		ft_count_if(char **tab, int (*f)(char*))
 {
-	return (ft_isblank(c) || c == '\n' || c == '\r'
-			|| c == '\v' || c == '\f');
+	int	x;
+
+	x = 0;
+	while (*tab)
+	{
+		if (f(*tab))
+			x++;
+		tab++;
+	}
+	return (x);
 }

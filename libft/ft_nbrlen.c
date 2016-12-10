@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isitblank.c                                     :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jmoucade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 15:01:06 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/14 10:24:51 by amazurie         ###   ########.fr       */
+/*   Created: 2016/11/05 14:31:30 by jmoucade          #+#    #+#             */
+/*   Updated: 2016/11/05 14:31:33 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isblank(int c)
+size_t		ft_nbrlen(int nbr)
 {
-	return (c == '\t' || c == ' ');
+	int		len;
+
+	len = 0;
+	if (nbr < 0)
+		len++;
+	while (nbr / 10 != 0)
+	{
+		len++;
+		nbr /= 10;
+	}
+	len++;
+	return (len);
 }

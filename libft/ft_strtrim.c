@@ -3,35 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jmoucade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/04 15:51:13 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/14 10:22:31 by amazurie         ###   ########.fr       */
+/*   Created: 2016/11/05 14:50:12 by jmoucade          #+#    #+#             */
+/*   Updated: 2016/11/05 14:50:14 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strtrim(char const *s)
+static int	is_separator(char c)
 {
-	char			*str;
-	unsigned int	i;
-	size_t			j;
+	return (c == ' ' || c == '\t' || c == '\n') ? (1) : (0);
+}
+
+char		*ft_strtrim(char const *s)
+{
+	int		i;
+	int		len;
+	char	*start;
+	char	*stop;
+	char	*str;
 
 	i = 0;
-	j = 0;
-	if (!s)
+	str = NULL;
+	if (s)
 	{
-		str = ft_strsub(s, 0, 1);
-		return (str);
+		while (is_separator(*(s + i)))
+			i++;
+		start = (char *)s + i;
+		i = ft_strlen(s) - 1;
+		while (start != s + i && is_separator(*(s + i)))
+			i--;
+		stop = (char *)s + i;
+		if (start >= stop)
+			len = 1;
+		else
+			len = stop - start + 1;
+		if ((str = ft_strnew(len)))
+			str = ft_strncpy(str, start, len);
 	}
-	while (ft_isblank(s[i]) || s[i] == '\n')
-		i++;
-	while (s[i + j])
-		j++;
-	j--;
-	while (s[i] && (ft_isspace(s[i + j]) || s[i] == '\n'))
-		j--;
-	str = ft_strsub(s, i, j + 1);
 	return (str);
 }

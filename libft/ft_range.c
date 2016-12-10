@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isitblank.c                                     :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jmoucade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 15:01:06 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/12 15:12:55 by amazurie         ###   ########.fr       */
+/*   Created: 2016/11/04 16:38:35 by jmoucade          #+#    #+#             */
+/*   Updated: 2016/11/04 16:38:37 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdlib.h>
 
-int		ft_isitblank(int c)
+int		*ft_range(int min, int max)
 {
-	return (c == ' ' || c == '\t');
+	int	*tab;
+	int	i;
+
+	if (min >= max || !(tab = (int*)malloc(sizeof(int) * (max - min))))
+		return (0);
+	i = 0;
+	while (min < max)
+		tab[i++] = min++;
+	return (tab);
 }

@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_islower.c                                       :+:      :+:    :+:   */
+/*   ft_puttab.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jmoucade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 15:43:30 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/11 15:46:20 by amazurie         ###   ########.fr       */
+/*   Created: 2016/11/06 16:29:55 by jmoucade          #+#    #+#             */
+/*   Updated: 2016/11/06 16:29:56 by jmoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_islower(int c)
+void		ft_puttab(char **tab)
 {
-	return (c >= 'a' && c <= 'z');
+	int		i;
+
+	i = 0;
+	if (!tab)
+		return ;
+	while (tab[i])
+	{
+		ft_putstr(tab[i]);
+		ft_putchar('\n');
+		i++;
+	}
 }

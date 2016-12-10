@@ -6,7 +6,7 @@
 /*   By: amazurie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 11:17:31 by amazurie          #+#    #+#             */
-/*   Updated: 2016/11/25 20:10:50 by amazurie         ###   ########.fr       */
+/*   Updated: 2016/11/29 10:21:14 by amazurie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	usageerror(void)
 {
-	ft_putstr("fillit usage: ./fillit target_file");
+	ft_putstr("fillit usage: ./fillit target_file\n");
 	return (0);
 }
 
